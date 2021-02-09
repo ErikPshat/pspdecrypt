@@ -11,6 +11,11 @@ all: $(BIN_PSP) $(BIN_PSAR)
 
 $(BIN_PSP): $(OBJS_PSP)
 	clang++ -o $@ $(OBJS_PSP)
+	mkdir -p ./release && mv $(BIN_PSP) ./release
 
 $(BIN_PSAR): $(OBJS_PSAR)
 	clang++ -o $@ $(OBJS_PSAR) -lz -lcrypto
+	mkdir -p ./release && mv $(BIN_PSAR) ./release
+
+clean:
+	rm -f $(OBJS_PSP) $(OBJS_PSAR)
